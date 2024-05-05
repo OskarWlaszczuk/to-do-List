@@ -3,7 +3,13 @@
     border: 2px solid rgba(179, 174, 174, 0.742);
     border-radius: 5px;
     box-shadow: 0px 0px 11px -3px #525251be;
-    width: 75%;
+    width: 60%;
+}
+
+@media (max-width:767px) {
+    .form {
+        width: 80%;
+    }
 }
 
 .form__label {
@@ -18,4 +24,28 @@
     padding: 10px;
     border: 2px solid rgba(179, 174, 174, 0.742);
     border-radius: 5px;
+}
+
+.form__button {
+    color: white;
+    background-color: teal;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+}
+
+/* Zapytać o tą nazwę klasy */
+.form__gridContainer {
+    display: grid;
+    grid-template-columns: 1fr 35%;
+    grid-gap: 15px;
+    padding: 20px;
+}
+
+@media (max-width:767px) {
+    .form__gridContainer {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, minmax(auto, 1fr));
+        grid-gap: 5px;
+    }
 }

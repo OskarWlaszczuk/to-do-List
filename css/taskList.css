@@ -1,12 +1,20 @@
-.tasksList{
+.tasksList {
     background-color: white;
     border: 2px solid rgba(179, 174, 174, 0.742);
-    border-radius: 5px;
+    border-radius: 3px;
     box-shadow: 0px 0px 11px -3px #525251be;
     width: 60%;
+    min-height: 100px;
+    margin-top: 15px;
 }
 
-.taskList__header{
+@media (max-width:767px) {
+    .tasksList {
+        width: 80%;
+    }
+}
+
+.taskList__header {
     display: block;
     padding: 10px;
     font-weight: bold;
@@ -20,4 +28,25 @@
 
 .taskList__listItem--done {
     text-decoration: line-through;
+}
+
+.tasksList__button {
+    border: none;
+    color: white;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: crimson;
+}
+
+.tasksList__button--done{
+    background: green;
+}
+
+.tasksList__button:hover {
+    background-color: rgb(250, 56, 94);
+}
+
+.tasksList__button--done:hover{
+    background: rgb(15, 190, 15);
 }

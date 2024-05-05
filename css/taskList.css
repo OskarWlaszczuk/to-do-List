@@ -1,3 +1,19 @@
+.tasksList{
+    background-color: white;
+    border: 2px solid rgba(179, 174, 174, 0.742);
+    border-radius: 5px;
+    box-shadow: 0px 0px 11px -3px #525251be;
+    width: 60%;
+}
+
+.taskList__header{
+    display: block;
+    padding: 10px;
+    font-weight: bold;
+    font-size: larger;
+    border-bottom: 2px solid rgba(179, 174, 174, 0.742);
+}
+
 .taskList__listItem {
     text-decoration: none;
 }

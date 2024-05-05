@@ -23,17 +23,18 @@
         <label class="form__label" for="newTask">
             Dodaj nowe zadanie
         </label>
-        <input required autofocus placeholder="Co jest do zrobienia" value="Zagrać w Wiedźmina" class="form__input js-inputNewTask" type="text"
-            name="newTask">
-        <button class="form__button js-addNewTaskButton">
-            Dodaj zadanie
-        </button>
+        <div class="form__gridContainer">
+            <input required autofocus placeholder="Co jest do zrobienia" value="Zagrać w Wiedźmina"
+                class="form__input js-inputNewTask" type="text" name="newTask">
+            <button class="form__button js-addNewTaskButton">
+                Dodaj zadanie
+            </button>
+        </div>
     </form>
-
-    <header>Lista zadań</header>
-    <ul class="js-tasksList">
-
-    </ul>
+    <div class="tasksList">
+        <header class="taskList__header">Lista zadań</header>
+        <ul class="js-tasksList"></ul>
+    </div>
 </body>
 
 </html>

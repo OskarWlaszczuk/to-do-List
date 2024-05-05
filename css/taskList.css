@@ -1,0 +1,7 @@
+.taskList__listItem {
+    text-decoration: none;
+}
+
+.taskList__listItem--done {
+    text-decoration: line-through;
+}

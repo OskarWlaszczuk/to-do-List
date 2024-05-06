@@ -39,3 +39,7 @@ I did this project, as part of the programming course, named *YouCode*, and trea
 
 >Multiple tasks, will locate under each other in order from oldest to newest added.
 ---
+
+## Full gif guide
+
+Belowe, I posted full gif guide of using To-Do List, where i captured its all possibilities.

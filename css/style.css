@@ -5,11 +5,3 @@ html {
 *, ::after, ::before {
     box-sizing: inherit;
 }
-
-.body {
-    font-family: "Lexend Deca", sans-serif;
-    background-color: #eee;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}

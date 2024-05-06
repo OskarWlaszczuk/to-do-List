@@ -28,7 +28,6 @@
 }
 
 .taskList__header {
-    display: block;
     padding: 10px;
     font-weight: bold;
     font-size: larger;
@@ -37,7 +36,6 @@
 
 .taskList__listItem {
     text-align: justify;
-    align-self: center;
     line-height: 1.5;
     border-bottom: 3px solid rgba(123, 118, 118, 0.742);
     margin-bottom: 15px;

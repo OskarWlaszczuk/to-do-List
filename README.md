@@ -15,6 +15,7 @@ I did this project, as part of the programming course, named *YouCode*, and trea
 ## Languages & Conventions
 
 - HTML
+---
 - CSS
     - CSS Box Model Module Level 3
     - CSS Backgrounds and Borders Module Level 3
@@ -24,10 +25,12 @@ I did this project, as part of the programming course, named *YouCode*, and trea
     - CSS Flexible Box Layout Module Level 1
     - CSS Grid Layout Module Level 2
     - Media Queries Level 4
+---
+- Java Script
+    - ECMAScript 6+
+---
 - OpenGraph Protocol
 - BEM Covention
--Java Script
-    - ECMAScript 6+
 
 ## How to use To-Do List
 
@@ -43,3 +46,7 @@ I did this project, as part of the programming course, named *YouCode*, and trea
 ## Full gif guide
 
 Belowe, I posted full gif guide of using To-Do List, where i captured its all possibilities.
+
+![Project gif guide](https://raw.githubusercontent.com/OskarWlaszczuk/to-do-list/114fefa5213de2cc44f4da4dcb8aa75391d6e791/img/project-gif.gif)
+
+> I created above gif, using *ScreenToGif* app

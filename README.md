@@ -4,7 +4,7 @@ Here, I present you, my personal To-Do List project, which, will help, you to ke
 
 ## Context of my project
 
-I did this project, as part of the programming course, name *YouCode*, and treat it, as incredible way to practice *HTML*, *CSS*, and *JS*!
+I did this project, as part of the programming course, named *YouCode*, and treat it, as incredible way to practice *HTML*, *CSS*, and *JS*!
 
 ## Check To-Do List on your own
 
@@ -28,3 +28,14 @@ I did this project, as part of the programming course, name *YouCode*, and treat
 - BEM Covention
 -Java Script
     - ECMAScript 6+
+
+## How to use To-Do List
+
+1. First of all, **write your task to the input field**, under header named "Dodaj nowe zadanie" (eng. "Add new task").
+---
+2. Then, **click teal-color button**, named "Dodaj zadanie" (eng. "Add task")
+---
+3. Your tasks, will be displayed in the seperated section, named "Lista zadań" (eng. "Tasks list"), under the form.
+
+>Multiple tasks, will locate under each other in order from oldest to newest added.
+---

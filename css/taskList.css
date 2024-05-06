@@ -14,6 +14,19 @@
     }
 }
 
+.taskList__list {
+    list-style-type: none;
+    padding: 0px;
+    display: grid;
+    grid-template-columns: 80px 1fr 80px;
+}
+
+@media (max-width:767px) {
+    .taskList__list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
 .taskList__header {
     display: block;
     padding: 10px;
@@ -23,7 +36,12 @@
 }
 
 .taskList__listItem {
-    text-decoration: none;
+    text-align: justify;
+    align-self: center;
+    line-height: 1.5;
+    border-bottom: 3px solid rgba(123, 118, 118, 0.742);
+    margin-bottom: 15px;
+    padding: 15px;
 }
 
 .taskList__listItem--done {
@@ -37,9 +55,12 @@
     padding: 10px;
     border-radius: 5px;
     background-color: crimson;
+    align-self: center;
+    min-height: 50px;
+    text-align: center;
 }
 
-.tasksList__button--done{
+.tasksList__button--done {
     background: green;
 }
 
@@ -47,6 +68,6 @@
     background-color: rgb(250, 56, 94);
 }
 
-.tasksList__button--done:hover{
+.tasksList__button--done:hover {
     background: rgb(15, 190, 15);
 }

@@ -58,6 +58,7 @@
 
         if (newTaskContent !== "") {
             pushNewTask(newTaskContent);
+            newTaskField.value = "";
         } else {
             newTaskField.focus();
         };

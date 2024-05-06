@@ -32,9 +32,8 @@
 
         for (const task of tasks) {
             htmlString += `
-            <li class="taskList__listItem ${task.done ? 'taskList__listItem--done' : ''}">
-               <button class="tasksList__button tasksList__button--done js-doneButton">✔</button> ${task.content}<button class="tasksList__button js-removeTaskButton">X</button>
-            </li>
+            <button class="tasksList__button tasksList__button--done js-doneButton">${task.done ? "✔" : ""}</button> <li class="taskList__listItem ${task.done ? 'taskList__listItem--done' : ''}"> ${task.content}
+            </li><button class="tasksList__button js-removeTaskButton">X</button>
             `};
 
         document.querySelector(".js-tasksList").innerHTML = htmlString;
@@ -66,7 +65,7 @@
 
     const init = () => {
         const formElement = document.querySelector(".js-form");
-        formElement.addEventListener("click", onFormSubmit);
+        formElement.addEventListener("submit", onFormSubmit);
     };
 
     init();

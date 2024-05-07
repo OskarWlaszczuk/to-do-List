@@ -38,7 +38,12 @@
     text-align: justify;
     line-height: 1.5;
     border-bottom: 3px solid rgba(123, 118, 118, 0.742);
-    margin-bottom: 15px;
+    padding: 5px;
+    transition: 0.5s;
+}
+
+.taskList__listItem:hover {
+    background-color: #eee;
     padding: 15px;
 }
 
@@ -52,20 +57,36 @@
     margin: 10px;
     padding: 10px;
     border-radius: 5px;
+    border: 3px solid #ab0929;
+    border-bottom: 10px solid #ab0929;
     background-color: crimson;
     align-self: center;
     min-height: 50px;
     text-align: center;
 }
 
-.tasksList__button--done {
-    background: green;
+.tasksList__button:hover {
+    background-color: rgb(213, 36, 72);
+    transition: 0.5s;
 }
 
-.tasksList__button:hover {
-    background-color: rgb(250, 56, 94);
+.tasksList__button:active {
+    border: 3px solid #ab0929;
+    border-top: 10px solid #ab0929;
+}
+
+.tasksList__button--done {
+    background: green;
+    border: 3px solid #0c660c;
+    border-bottom: 10px solid #0c660c;
 }
 
 .tasksList__button--done:hover {
-    background: rgb(15, 190, 15);
+    background: rgb(6, 147, 6);
+    transition: 0.5s;
+}
+
+.tasksList__button--done:active {
+    border: 3px solid #0c660c;
+    border-top: 10px solid #0c660c;
 }

@@ -1,24 +1,33 @@
 {
-    const tasks = [];
+    let tasks = [];
 
     const removeTask = (taskIndex) => {
-        tasks.splice(taskIndex, 1);
+        tasks = [
+            ...tasks.slice(0, taskIndex),
+        ];
         render();
     };
 
     const toggleDone = (taskIndex) => {
-        tasks[taskIndex].done = !tasks[taskIndex].done;
+        tasks = tasks.map((task, index) =>
+            index === taskIndex ? { ...task, done: !task.done } : task
+        );
         render();
     };
 
-    const callEvents = () => {
+    const callManagmantButtonsEvent = () => { };
+
+    const callToggleDoneEvents = () => {
         const toggleDoneStatusButton = document.querySelectorAll(".js-doneButton");
         toggleDoneStatusButton.forEach((toggleButton, taskIndex) => {
             toggleButton.addEventListener("click", () => {
                 toggleDone(taskIndex);
             });
         });
+    };
 
+
+    const callRemoveTaskEvents = () => {
         const removeTaskButton = document.querySelectorAll(".js-removeTaskButton");
         removeTaskButton.forEach((removeButton, taskIndex) => {
             removeButton.addEventListener("click", () => {
@@ -27,9 +36,10 @@
         });
     };
 
-    const render = () => {
-        let htmlString = "";
+    const renderManagmentTasksButton = () => { };
 
+    const renderTasks = () => {
+        let htmlString = "";
         for (const task of tasks) {
             htmlString += `
             <button class="tasksList__button tasksList__button--done js-doneButton">${task.done ? "✔" : ""}</button> <li class="taskList__listItem ${task.done ? 'taskList__listItem--done' : ''}"> ${task.content}
@@ -37,15 +47,25 @@
             `};
 
         document.querySelector(".js-tasksList").innerHTML = htmlString;
-        callEvents();
+
     };
 
-    const pushNewTask = (newTaskContent) => {
-        tasks.push(
+    const render = () => {
+        renderTasks();
+        renderManagmentTasksButton();
+
+        callRemoveTaskEvents();
+        callToggleDoneEvents();
+        callManagmantButtonsEvent();
+    };
+
+    const updateTasks = (newTaskContent) => {
+        tasks = [
+            ...tasks,
             {
                 content: newTaskContent,
             },
-        );
+        ];
 
         render();
     };
@@ -57,7 +77,7 @@
         const newTaskContent = newTaskField.value.trim();
 
         if (newTaskContent !== "") {
-            pushNewTask(newTaskContent);
+            updateTasks(newTaskContent);
             newTaskField.value = "";
             newTaskField.focus();
         } else {

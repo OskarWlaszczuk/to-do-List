@@ -67,7 +67,7 @@
 
 .tasksList__button:hover {
     background-color: rgb(213, 36, 72);
-    transition: 0.5s;
+    transition: 0.2s;
 }
 
 .tasksList__button:active {
@@ -83,10 +83,26 @@
 
 .tasksList__button--done:hover {
     background: rgb(6, 147, 6);
-    transition: 0.5s;
+    transition: 0.2s;
 }
 
 .tasksList__button--done:active {
     border: 3px solid #0c660c;
     border-top: 10px solid #0c660c;
+}
+
+.taskList__managementTasksButton {
+    display: none;
+}
+
+.taskList__managementTasksButton--visibly {
+    display: inline-block;
+    color: #287792;
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+}
+
+.taskList__managementTasksButton--visibly:disabled {
+    color: #44545a82;
 }

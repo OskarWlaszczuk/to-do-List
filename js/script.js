@@ -1,42 +1,42 @@
 {
-    let tasks = [];
 
-    const removeTask = (taskIndex) => {
+    let tasks = [];
+    let hideDoneTasks = false;
+
+    const removeTask = removeTaskIndex => {
         tasks = [
-            ...tasks.slice(0, taskIndex),
+            ...tasks.slice(0, removeTaskIndex),
+            ...tasks.slice(removeTaskIndex + 1),
         ];
         render();
     };
 
-    const toggleDone = (taskIndex) => {
+    const toggleDone = toggleDoneIndex => {
         tasks = tasks.map((task, index) =>
-            index === taskIndex ? { ...task, done: !task.done } : task
+            index === toggleDoneIndex ?
+                { ...task, done: !task.done } :
+                task
         );
         render();
     };
 
-    const callManagmantButtonsEvent = () => { };
-
     const callToggleDoneEvents = () => {
         const toggleDoneStatusButton = document.querySelectorAll(".js-doneButton");
-        toggleDoneStatusButton.forEach((toggleButton, taskIndex) => {
-            toggleButton.addEventListener("click", () => {
-                toggleDone(taskIndex);
+        toggleDoneStatusButton.forEach((toggleDoneButton, toggleDoneIndex) => {
+            toggleDoneButton.addEventListener("click", () => {
+                toggleDone(toggleDoneIndex);
             });
         });
     };
 
-
-    const callRemoveTaskEvents = () => {
+    const callRemoveTaskEvent = () => {
         const removeTaskButton = document.querySelectorAll(".js-removeTaskButton");
-        removeTaskButton.forEach((removeButton, taskIndex) => {
+        removeTaskButton.forEach((removeButton, removeTaskIndex) => {
             removeButton.addEventListener("click", () => {
-                removeTask(taskIndex);
+                removeTask(removeTaskIndex);
             });
         });
     };
-
-    const renderManagmentTasksButton = () => { };
 
     const renderTasks = () => {
         let htmlString = "";
@@ -50,16 +50,77 @@
 
     };
 
-    const render = () => {
-        renderTasks();
-        renderManagmentTasksButton();
+    const renderButtons = () => {
+        let buttonsString = `
+        <button class=" js-toggleDonedTasksVisibility
+        ${tasks.length > 0 ?
+                'taskList__managementTasksButton--visibly' : 'taskList__managementTasksButton'}">
+               ${hideDoneTasks === false ?
+                'Ukryj ukończone' :
+                'Pokaż ukończone'
+            }
+        </button>
 
-        callRemoveTaskEvents();
-        callToggleDoneEvents();
-        callManagmantButtonsEvent();
+        <button
+        ${tasks.every(({ done }) => done) ?
+                'disabled' :
+                ''}
+        class="js-doneAllTasksButton
+        ${tasks.length > 0 ?
+                'taskList__managementTasksButton--visibly' : 'taskList__managementTasksButton'}">
+            Ukończ wszystkie
+        </button>
+        `;
+
+        document.querySelector(".js-tasksListButtonContainer").innerHTML = buttonsString;
     };
 
-    const updateTasks = (newTaskContent) => {
+    const toggleVisibilityOfDonedTasks = (toggleVisibilityOfDonedTasksButton) => {
+
+        if (tasks.some(({ done }) => done === true)) {
+            hideDoneTasks = true;
+        } else {
+            hideDoneTasks = false;
+        };
+
+        if (hideDoneTasks === true) {
+            tasks = tasks.filter(({ done }) => done === false);
+        } else {
+            tasks = tasks.filter(task => task);
+        };
+
+        render();
+    };
+
+    const toggleAllTaskDone = () => {
+        tasks = tasks.map(task => ({
+            ...task,
+            done: true
+        }));
+        render();
+    };
+
+    const callButtonsEvents = () => {
+        const toggleVisibilityOfDonedTasksButton = document.querySelector(".js-toggleDonedTasksVisibility");
+
+        const toggleAllTasksButton = document.querySelector(".js-doneAllTasksButton");
+
+        if (tasks.length > 0) {
+            toggleVisibilityOfDonedTasksButton.addEventListener("click", () => toggleVisibilityOfDonedTasks(toggleVisibilityOfDonedTasksButton));
+            toggleAllTasksButton.addEventListener("click", toggleAllTaskDone);
+        };
+    };
+
+    const render = () => {
+        renderTasks();
+        renderButtons();
+
+        callRemoveTaskEvent();
+        callToggleDoneEvents();
+        callButtonsEvents();
+    };
+
+    const updateTasks = newTaskContent => {
         tasks = [
             ...tasks,
             {
@@ -70,7 +131,7 @@
         render();
     };
 
-    const onFormSubmit = (event) => {
+    const onFormSubmit = event => {
         event.preventDefault();
 
         const newTaskField = document.querySelector(".js-inputNewTask");

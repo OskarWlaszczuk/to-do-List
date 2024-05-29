@@ -75,7 +75,7 @@
         document.querySelector(".js-tasksListButtonContainer").innerHTML = buttonsString;
     };
 
-    const toggleVisibilityOfDonedTasks = (toggleVisibilityOfDonedTasksButton) => {
+    const toggleVisibilityOfDonedTasks = () => {
 
         if (tasks.some(({ done }) => done === true)) {
             hideDoneTasks = true;
@@ -106,7 +106,7 @@
         const toggleAllTasksButton = document.querySelector(".js-doneAllTasksButton");
 
         if (tasks.length > 0) {
-            toggleVisibilityOfDonedTasksButton.addEventListener("click", () => toggleVisibilityOfDonedTasks(toggleVisibilityOfDonedTasksButton));
+            toggleVisibilityOfDonedTasksButton.addEventListener("click", toggleVisibilityOfDonedTasks);
             toggleAllTasksButton.addEventListener("click", toggleAllTaskDone);
         };
     };

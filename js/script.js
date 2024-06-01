@@ -1,6 +1,6 @@
 {
-
     let tasks = [];
+
     let hideDoneTasks = false;
 
     const removeTask = removeTaskIndex => {
@@ -39,56 +39,37 @@
     };
 
     const renderTasks = () => {
-        let htmlString = "";
+        let htmlStringOfTaskListItem = "";
         for (const task of tasks) {
-            htmlString += `
-            <button class="tasksList__button tasksList__button--done js-doneButton">${task.done ? "✔" : ""}</button> <li class="taskList__listItem ${task.done ? 'taskList__listItem--done' : ''}"> ${task.content}
-            </li><button class="tasksList__button js-removeTaskButton">X</button>
+            htmlStringOfTaskListItem += ` 
+            <li class="js-taskListItem taskList__listItem ${hideDoneTasks && task.done ? 'taskList__listItem--hidden' : ''}"> 
+                <button class="tasksList__button tasksList__button--done js-doneButton">${task.done ? "✔" : ""}</button>
+                <p class="taskList__taskContent ${task.done ? 'taskList__taskContent--done' : ''}">${task.content}</p>
+                <button class="tasksList__button js-removeTaskButton">X</button>
+            </li>
             `};
-
-        document.querySelector(".js-tasksList").innerHTML = htmlString;
-
+        document.querySelector(".js-tasksList").innerHTML = htmlStringOfTaskListItem;
     };
 
     const renderButtons = () => {
-        let buttonsString = `
+        let managmentButtonsHtmlString = `
         <button class=" js-toggleDonedTasksVisibility
-        ${tasks.length > 0 ?
-                'taskList__managementTasksButton--visibly' : 'taskList__managementTasksButton'}">
-               ${hideDoneTasks === false ?
-                'Ukryj ukończone' :
-                'Pokaż ukończone'
-            }
+        ${tasks.length > 0 ? 'taskList__managementTasksButton--visibly' : 'taskList__managementTasksButton'}">
+            ${hideDoneTasks ? 'Pokaż' : 'Ukryj'} ukończone
         </button>
-
-        <button
-        ${tasks.every(({ done }) => done) ?
-                'disabled' :
-                ''}
-        class="js-doneAllTasksButton
-        ${tasks.length > 0 ?
-                'taskList__managementTasksButton--visibly' : 'taskList__managementTasksButton'}">
+        <button ${tasks.every(({ done }) => done) ? 'disabled' : ''} class="js-doneAllTasksButton
+        ${tasks.length > 0 ? 'taskList__managementTasksButton--visibly' : 'taskList__managementTasksButton'}">
             Ukończ wszystkie
         </button>
         `;
-
-        document.querySelector(".js-tasksListButtonContainer").innerHTML = buttonsString;
+        document.querySelector(".js-tasksListButtonContainer").innerHTML = managmentButtonsHtmlString;
     };
 
     const toggleVisibilityOfDonedTasks = () => {
-
-        if (tasks.some(({ done }) => done === true)) {
-            hideDoneTasks = true;
-        } else {
+        hideDoneTasks = !hideDoneTasks;
+        if (hideDoneTasks && tasks.every(({ done }) => !done)) {
             hideDoneTasks = false;
         };
-
-        if (hideDoneTasks === true) {
-            tasks = tasks.filter(({ done }) => done === false);
-        } else {
-            tasks = tasks.filter(task => task);
-        };
-
         render();
     };
 
@@ -106,8 +87,8 @@
         const toggleAllTasksButton = document.querySelector(".js-doneAllTasksButton");
 
         if (tasks.length > 0) {
-            toggleVisibilityOfDonedTasksButton.addEventListener("click", toggleVisibilityOfDonedTasks);
             toggleAllTasksButton.addEventListener("click", toggleAllTaskDone);
+            toggleVisibilityOfDonedTasksButton.addEventListener("click", toggleVisibilityOfDonedTasks);
         };
     };
 
@@ -125,6 +106,7 @@
             ...tasks,
             {
                 content: newTaskContent,
+                done: false,
             },
         ];
 

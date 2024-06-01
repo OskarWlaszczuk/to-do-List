@@ -14,41 +14,88 @@
     }
 }
 
+.taskList__gridContainer {
+    display: grid;
+    align-items: center;
+    padding: 15px;
+    grid-template-columns: repeat(2, 1fr);
+    border-bottom: 2px solid rgba(179, 174, 174, 0.742);
+}
+
+.taskList__header {
+    font-weight: bold;
+    font-size: larger;
+    justify-self: start;
+    padding: 10px;
+}
+
+.tasksList__buttonContainer {
+    margin: 0;
+    justify-self: end;
+}
+
+.taskList__managementTasksButton {
+    display: none;
+}
+
+.taskList__managementTasksButton--visibly {
+    color: #287792;
+    background-color: transparent;
+    border: none;
+    transition: 0.3s;
+    margin: 3px;
+    text-align: center;
+}
+
+.taskList__managementTasksButton--visibly:hover {
+    color: rgb(8, 187, 187);
+}
+
+.taskList__managementTasksButton--visibly:disabled {
+    color: #44545a82;
+}
+
 .taskList__list {
     list-style-type: none;
     padding: 0px;
+}
+
+.taskList__listItem {
+    border-bottom: 3px solid rgba(144, 141, 141, 0.742);
+    padding: 5px;
+    transition: 0.8s;
     display: grid;
     grid-template-columns: 80px 1fr 80px;
+    transition:
+        background 0.3s,
+        padding 0.3s,
+        font-size 0.3s,
+    ;
 }
 
 @media (max-width:767px) {
-    .taskList__list {
+    .taskList__listItem {
+        grid-template-columns: 0.5fr 2fr 0.5fr;
+    }
+}
+
+@media (max-width:550px) {
+    .taskList__listItem {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-.taskList__header {
-    padding: 10px;
-    font-weight: bold;
-    font-size: larger;
-    border-bottom: 2px solid rgba(179, 174, 174, 0.742);
-}
-
-.taskList__listItem {
-    text-align: justify;
-    line-height: 1.5;
-    border-bottom: 3px solid rgba(123, 118, 118, 0.742);
-    padding: 5px;
-    transition: 0.5s;
-}
-
 .taskList__listItem:hover {
-    background-color: #eee;
-    padding: 15px;
+    background-color: #c1bfbf;
 }
 
-.taskList__listItem--done {
-    text-decoration: line-through;
+.taskList__listItem--enlarged {
+    padding: 20px;
+    font-size: larger;
+}
+
+.taskList__listItem--hidden {
+    display: none;
 }
 
 .tasksList__button {
@@ -66,7 +113,7 @@
 }
 
 .tasksList__button:hover {
-    background-color: rgb(213, 36, 72);
+    background-color: rgb(241, 40, 80);
     transition: 0.2s;
 }
 
@@ -91,18 +138,14 @@
     border-top: 10px solid #0c660c;
 }
 
-.taskList__managementTasksButton {
-    display: none;
+.taskList__taskContent {
+    text-align: center;
+    line-height: 1.5;
+    padding: 10px;
+    justify-self: center;
+    word-break: break-all;
 }
 
-.taskList__managementTasksButton--visibly {
-    display: inline-block;
-    color: #287792;
-    background-color: transparent;
-    border: none;
-    font-weight: bold;
-}
-
-.taskList__managementTasksButton--visibly:disabled {
-    color: #44545a82;
+.taskList__taskContent--done {
+    text-decoration: line-through;
 }

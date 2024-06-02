@@ -158,6 +158,17 @@
     border-bottom: none;
 }
 
+@media (max-width:650px) {
+    .taskList__statsContainer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 5px;
+        grid-gap: 5%;
+        justify-content: center;
+        border-bottom: none;
+    }
+}
+
 .tasksList__statsItem {
     color: white;
     background-color: #488b2f;
@@ -165,6 +176,12 @@
     text-decoration: underline;
     padding: 15px;
     line-height: 1.5;
+}
+
+@media (max-width:650px) {
+    .tasksList__statsItem {
+        padding: 10px;
+    }
 }
 
 .tasksList__statsItem--finishedTasks {

@@ -11,6 +11,7 @@
 @media (max-width:767px) {
     .tasksList {
         width: 80%;
+        margin-bottom: 10px;
     }
 }
 
@@ -23,16 +24,30 @@
     border-bottom: 2px solid rgba(179, 174, 174, 0.742);
 }
 
+@media (max-width:767px) {
+    .taskList__gridContainer {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 1fr);
+    }
+}
+
 .taskList__header {
     font-weight: bold;
-    font-size: larger;
+    font-size: 25px;
     justify-self: start;
     padding: 10px;
 }
 
+@media (max-width:767px) {
+    .taskList__header {
+        justify-self: center;
+    }
+}
+
 .tasksList__buttonContainer {
-    margin: 0;
-    justify-self: end;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .taskList__managementTasksButton {
@@ -84,10 +99,6 @@
     .taskList__listItem {
         grid-template-columns: repeat(3, 1fr);
     }
-}
-
-.taskList__listItem:hover {
-    background-color: #c1bfbf;
 }
 
 .taskList__listItem--enlarged {

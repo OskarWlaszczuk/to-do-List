@@ -24,9 +24,12 @@
 
         const toggleAllTasksButton = document.querySelector(".js-doneAllTasksButton");
 
-        if (tasks.length > 0) {
-            toggleAllTasksButton.addEventListener("click", toggleAllTaskDone);
+        if (toggleVisibilityOfDonedTasksButton) {
             toggleVisibilityOfDonedTasksButton.addEventListener("click", toggleVisibilityOfDonedTasks);
+        };
+
+        if (toggleAllTasksButton) {
+            toggleAllTasksButton.addEventListener("click", toggleAllTaskDone);
         };
     };
 
@@ -78,17 +81,22 @@
     };
 
     const renderButtons = () => {
-        const managmentButtonsHtmlString = `
-        <button class=" js-toggleDonedTasksVisibility
-        ${tasks.length > 0 ? 'taskList__managementTasksButton--visibly' : 'taskList__managementTasksButton'}">
-            ${hideDoneTasks ? 'Pokaż' : 'Ukryj'} ukończone
-        </button>
-        <button ${tasks.every(({ done }) => done) ? 'disabled' : ''} class="js-doneAllTasksButton
-        ${tasks.length > 0 ? 'taskList__managementTasksButton--visibly' : 'taskList__managementTasksButton'}">
-            Ukończ wszystkie
-        </button>
-        `;
-        document.querySelector(".js-tasksListButtonContainer").innerHTML = managmentButtonsHtmlString;
+        let htmlStringOfManagmentButtons = "";
+        if (tasks.length > 0) {
+            htmlStringOfManagmentButtons += `
+            <button class=" js-toggleDonedTasksVisibility
+            ${tasks.length > 0 ? 'taskList__managementTasksButton--visibly' : 'taskList__managementTasksButton'}">
+                ${hideDoneTasks ? 'Pokaż' : 'Ukryj'} ukończone
+            </button>
+            <button ${tasks.every(({ done }) => done) ? 'disabled' : ''} class="js-doneAllTasksButton
+            ${tasks.length > 0 ? 'taskList__managementTasksButton--visibly' : 'taskList__managementTasksButton'}">
+                Ukończ wszystkie
+            </button>
+            `;
+            document.querySelector(".js-tasksListButtonContainer").innerHTML = htmlStringOfManagmentButtons;
+        } else {
+            document.querySelector(".js-tasksListButtonContainer").innerHTML = "";
+        };
     };
 
     const renderTasks = () => {
@@ -98,7 +106,7 @@
             <li class="js-taskListItem taskList__listItem ${hideDoneTasks && task.done ? 'taskList__listItem--hidden' : ''}"> 
                 <button class="tasksList__button tasksList__button--done js-doneButton">${task.done ? "✔" : ""}</button>
                 <p class="taskList__taskContent ${task.done ? 'taskList__taskContent--done' : ''}">${task.content}</p>
-                <button class="tasksList__button js-removeTaskButton">X</button>
+                <button class="tasksList__button js-removeTaskButton">🗑️</button>
             </li>
             `};
         document.querySelector(".js-tasksList").innerHTML = htmlStringOfTaskListItem;
@@ -114,7 +122,7 @@
         callButtonsEvents();
     };
 
-    const updateTasks = newTaskContent => {
+    const addNewTask = newTaskContent => {
         tasks = [
             ...tasks,
             {
@@ -133,12 +141,11 @@
         const newTaskContent = newTaskField.value.trim();
 
         if (newTaskContent !== "") {
-            updateTasks(newTaskContent);
+            addNewTask(newTaskContent);
             newTaskField.value = "";
-            newTaskField.focus();
-        } else {
-            newTaskField.focus();
         };
+
+        newTaskField.focus();
     };
 
     const init = () => {

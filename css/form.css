@@ -33,19 +33,23 @@
     border-radius: 3px;
     transition:
         background 0.5s linear,
-        transform 0.3s linear,
+        transform 0.5s linear,
         font-weight 0.8s linear;
 }
 
 .form__button:hover {
     background-color: rgb(52, 157, 157);
-    transform: scaleX(102%);
-    font-weight: bold;
+    transform: scaleX(105%);
+    transition:0.2s linear;
+}
+
+.form__button:active {
+    background-color: rgb(56, 212, 212);
 }
 
 .form__gridContainer {
     display: grid;
-    grid-template-columns: 1fr 35%;
+    grid-template-columns: 1fr 25%;
     grid-gap: 15px;
     padding: 20px;
 }
